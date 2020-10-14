@@ -7,70 +7,138 @@
 .mainContainer {
   position: absolute;
   z-index: -1000;
-  background-color: #32748a;
+  background-color: #ee6c4d;
   height: 100vh;
   width: 100vw;
   font-family: "Ubuntu Mono", monospace;
-}
-
-.micImg {
-  position: absolute;
-  z-index: 1;
-  height: 50vh;
-  top: 15vh;
-  right: -70px;
-}
-@media (min-width: 768px) {
-  .micImg {
-    top: 5vh;
-    right: 0;
-    height: 70vh;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pageLogo {
   font-family: "Rock Salt", cursive;
-  font-size: 3em;
-  position: absolute;
+  font-size: 2.5em;
   z-index: 2;
-  left: 30px;
 }
 @media (min-width: 768px) {
   .pageLogo {
-    font-size: 8em;
+    font-size: 6em;
     left: 20vw;
   }
 }
 
 .headerContainer {
+  display: flex;
+}
+
+.recorderContainer {
+  position: fixed;
+  bottom: 25px;
+  z-index: 3;
+  font-size: 5em;
+  border: solid 7px black;
+  border-radius: 50%;
   display: block;
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  background-color: #92cde0;
 }
 
 .recordIcon {
-  position: absolute;
-  z-index: 3;
-  top: 35vh;
-  left: 45px;
-  font-size: 5em;
+  position: relative;
+  top: 25px;
 }
 
 .bodyContainer {
-  position: absolute;
   z-index: 10;
-  top: 58vh;
-  background-color: #92cde0;
-  min-height: 50vh;
+  min-height: 30vh;
   width: 80vw;
-  left: 10vw;
   padding: 5px;
-  border: solid 5px #225566;
+  margin-top: 25vh;
 }
 
 .recording {
-  display: block;
-  background-color: #79c1d9;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #e0fbfc;
   margin: 15px 0;
+  height: 67px;
+  color: #293241;
+  border-radius: 3px;
+}
+@media (max-width: 767px) {
+  .recording {
+    overflow: hidden;
+    font-size: 0.7em;
+  }
+}
+
+.editRecording:hover,
+.deleteRecording:hover {
+  color: black;
+}
+
+.audio {
+  display: block;
+  margin: 5px;
+  margin-left: -1px;
+}
+
+.searchForm {
+  display: flex;
+  justify-content: center;
+  margin-left: 30px;
+  margin-bottom: 30x;
+}
+
+.searchInput {
+  border-radius: 10px;
+  border: double 2px #293241;
+  padding-left: 8px;
+  font-size: 0.9em;
   height: 30px;
+}
+.searchInput:hover {
+  border-color: black;
+}
+
+.searchIcon {
+  color: #293241;
+  position: relative;
+  right: 25px;
+  top: 6px;
+}
+.searchIcon:hover {
+  color: black;
+}
+
+.filtersContainer {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.filterBtn {
+  border-radius: 15px;
+  height: 35px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Roboto;
+  font-size: 1.2em;
+}
+
+.Chronometer {
+  position: fixed;
+  top: 170px;
+  width: 40vw;
+  left: 30vw;
 }
 
 /*# sourceMappingURL=main.css.map */

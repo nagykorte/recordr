@@ -1,15 +1,14 @@
+// imports
 import React from 'react'
-import styles from '../styles/main.css'
 import Header from './Header'
 import Recorder from './Recorder'
 import Body from './Body'
+import styles from '../styles/main.css'
+import { MongoClient } from "mongodb"
 
 
 
 export default class MainContainer extends React.Component {
-    constructor() {
-        super()
-    }
     render() {
         return (
             <div className="mainContainer">

@@ -1,83 +1,147 @@
 // imports
 @import ./sass/_colors
 @import ./sass/_fonts
-    
-    
+
 *
     box-sizing: border-box
     margin: 0
     padding: 0
-    
+
 .mainContainer //main container!!
     position: absolute
     z-index: -1000
-    background-color: $dark
+    background-color: $burnt-sienna
     height: 100vh
     width: 100vw
     font-family: $ubuntu
-
+    display: flex
+    flex-direction: column
+    align-items: center
 
 ////////////////
 //// header ////
 ////////////////
 
-
-.micImg //background
-    position: absolute
-    z-index: 1
-    height: 50vh
-    top: 15vh
-    right: -70px
-    @media ( min-width: 768px )//fixing position and size for bigger screens
-        top: 5vh
-        right: 0
-        height: 70vh
 .pageLogo
     font-family: $logo2
-    font-size: 3em
-    position: absolute
+    font-size: 2.5em
     z-index: 2
-    left: 30px
     @media (min-width: 768px)
-        font-size: 8em
+        font-size: 6em
         left: 20vw
 .headerContainer
-    display: block
-    
+    display: flex
 
 ////////////////
 /// recorder ///
 ////////////////
 
-.recordIcon
-    position: absolute
+.recorderContainer
+    position: fixed
+    bottom: 25px
     z-index: 3
-    top: 35vh
-    left: 45px
     font-size: 5em
+    border: solid 7px black
+    border-radius: 50%
+    display: block
+    height: 150px
+    width: 150px
+    text-align: center
+    background-color: $bright
 
+.recordIcon
+    position: relative
+    top: 25px
 
 ////////////////
 //// search ////
 ////////////////
 
 .bodyContainer
-    position: absolute
     z-index: 10
-    top: 58vh
-    background-color: $bright
-    min-height: 50vh
+    min-height: 30vh
     width: 80vw
-    left: 10vw
     padding: 5px
-    border: solid 5px #225566
+    margin-top: 25vh
+    //                                              // stuff for a solid container
+    // background-color: $bdazzled-blue
+    // border-radius: 5px 
+    // border: solid 5px #225566
 
 ////////////////
 //// record ////
 ////////////////
 
+.recordingContainer
 .recording
-    display: block
-    background-color: $background
+    padding: 5px
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: space-between
+    background-color: $light-cyan
     margin: 15px 0
+    height: 67px
+    color: $gunmetal
+    border-radius: 3px
+    @media (max-width: 767px)
+        overflow: hidden
+        font-size: .7em
+.editRecording,
+.deleteRecording
+    &:hover
+        color: black
+.audio
+    display: block
+    margin: 5px
+    margin-left: -1px
+
+////////////////
+//// search ////
+////////////////
+
+.searchForm
+    display: flex
+    justify-content: center
+    margin-left: 30px
+    margin-bottom: 30x
+.searchInput
+    border-radius: 10px
+    border: double 2px $gunmetal
+    padding-left: 8px
+    font-size: .9em
     height: 30px
+    &:hover
+        border-color: black
+.searchIcon
+    color: $gunmetal
+    position: relative
+    right: 25px
+    top: 6px
+    &:hover
+        color: black
+
+/////////////////
+//// filters ////
+/////////////////
+
+.filtersContainer
+    display: flex
+    justify-content: space-around
+    margin: 20px 0
+
+.filterBtn
+    border-radius: 15px
+    height: 35px
+    width: 70px
+    display: flex
+    justify-content: center
+    align-items: center
+    font-family: Roboto
+    font-size: 1.2em
+
+.Chronometer
+    position: fixed
+    top: 170px
+    width: 40vw
+    left: 30vw
