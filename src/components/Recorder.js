@@ -1,34 +1,38 @@
 // imports
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMicrophoneAlt, faTruckMonster } from '@fortawesome/free-solid-svg-icons'
+import { faMicrophoneAlt, faSquareFull, faPlay, faSave } from '@fortawesome/free-solid-svg-icons'
 
 export default class Recorder extends React.Component {
     constructor() {
         super()
         this.state = {
             iconColor: 'black',
-            recBtn: true,
-            stopBtn: false,
-            playBtn: false,
-            saveBtn: false,
+            recBtn: 'inline',
+            stopBtn: 'none',
+            playBtn: 'none',
+            saveBtn: 'none',
             currentAudio: null,
             seconds: 0,
             centiSeconds: 0,
             timerOn: false
         }
-        this.button = null;
-        this.setButtonRef = element => {
-            this.button = element;
-        }
-        this.record.bind(this)
+        // this.record.bind(this)
     }
     //////////////////
     //// recorder ////
     //////////////////
 
-    async record() {
-        this.setState({ iconColor: 'red' });
+    // async record() {
+
+    //     return recorder
+    // }
+    ////////////////////////
+    /////// buttons ////////
+    ////////////////////////
+
+    async recButton() {
+        // var recorder = await this.record();
 
         let recorder = await new Promise(async function (resolve) {
             var stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -51,24 +55,19 @@ export default class Recorder extends React.Component {
                 });
             resolve({ start, stop });
         });
-        return recorder
-    }
-    ////////////////////////
-    /////// buttons ////////
-    ////////////////////////
 
-    async recButton() {
-        var recorder = await this.record();
+
+
         this.startWatch()
         recorder.start()
-        this.setState({ stopBtn: true, recBtn: false })
+        await this.setState({ stopBtn: 'inline', recBtn: 'none' })
         this.setState({ currentAudio: recorder })
     };
     async stopButton() {
         let audio = await this.state.currentAudio.stop();
         this.stopWatch();
         audio.play();
-        this.setState({ recBtn: true, stopBtn: false, saveBtn: true, playBtn: true, currentAudio: audio })
+        await this.setState({ recBtn: 'block', stopBtn: 'none', saveBtn: 'block', playBtn: 'block', currentAudio: audio })
     };
     saveButton() {
         if (this.state.currentAudio.audioBlob.size < 500000) { // 500kb size limit
@@ -112,7 +111,7 @@ export default class Recorder extends React.Component {
             this.setState({
                 centiSeconds: this.state.centiSeconds + 1
             })
-            if (this.state.centiSeconds == 100) {
+            if (this.state.centiSeconds === 100) {
                 this.setState({ centiSeconds: 0, seconds: this.state.seconds + 1 })
             }
             if (this.state.seconds > 59) {
@@ -127,18 +126,31 @@ export default class Recorder extends React.Component {
     render() {
         return (
             <div className="recorderContainer">
-                {/* <FontAwesomeIcon // the recorder button itself
-                    style={{ color: this.state.iconColor }}
-                    onClick={this.record.bind(this)} //toggler
+                <div className="Chronometer"> {this.state.seconds}.{this.state.centiSeconds} </div>
+                <FontAwesomeIcon // the recorder button itself
+                    style={{ display: this.state.recBtn, }}
                     className="recordIcon"
                     icon={faMicrophoneAlt}
-                    ref={this.recorderIcon}
-                /> */}
-                <div className="Chronometer"> {this.state.seconds}.{this.state.centiSeconds} </div>
-                <button onClick={this.recButton.bind(this)} disabled={!this.state.recBtn} >Record</button>
-                <button onClick={this.stopButton.bind(this)} disabled={!this.state.stopBtn} >Stop</button>
-                <button onClick={this.playLastRec.bind(this)} disabled={!this.state.playBtn} >Play</button>
-                <button onClick={this.saveButton.bind(this)} disabled={!this.state.saveBtn} >Save</button>
+                    onClick={this.recButton.bind(this)}
+                />
+                <FontAwesomeIcon // the recorder button itself
+                    style={{ display: this.state.stopBtn }}
+                    onClick={this.stopButton.bind(this)} //toggler
+                    className="stopIcon"
+                    icon={faSquareFull}
+                />
+                <FontAwesomeIcon // the recorder button itself
+                    style={{ display: this.state.playBtn }}
+                    onClick={this.playLastRec.bind(this)} //toggler
+                    className="playIcon"
+                    icon={faPlay}
+                />
+                <FontAwesomeIcon // the recorder button itself
+                    style={{ display: this.state.playBtn }}
+                    onClick={this.saveButton.bind(this)} //toggler
+                    className="saveIcon"
+                    icon={faSave}
+                />
             </div>
         )
     }

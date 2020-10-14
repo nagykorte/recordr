@@ -4,10 +4,13 @@
   padding: 0;
 }
 
+html {
+  background-color: #ee6c4d;
+}
+
 .mainContainer {
   position: absolute;
   z-index: -1000;
-  background-color: #ee6c4d;
   height: 100vh;
   width: 100vw;
   font-family: "Ubuntu Mono", monospace;
@@ -33,8 +36,7 @@
 }
 
 .recorderContainer {
-  position: fixed;
-  bottom: 25px;
+  margin-top: 70px;
   z-index: 3;
   font-size: 5em;
   border: solid 7px black;
@@ -47,16 +49,30 @@
 }
 
 .recordIcon {
+  margin: 25px;
+}
+
+.playIcon {
   position: relative;
-  top: 25px;
+  top: -100px;
+  left: 170px;
+}
+
+.stopIcon {
+  margin: 25px;
+}
+
+.saveIcon {
+  position: relative;
+  top: -180px;
+  right: 100px;
 }
 
 .bodyContainer {
   z-index: 10;
-  min-height: 30vh;
   width: 80vw;
   padding: 5px;
-  margin-top: 25vh;
+  bottom: 20%;
 }
 
 .recording {
@@ -77,6 +93,11 @@
     font-size: 0.7em;
   }
 }
+@media (min-width: 768px) {
+  .recording {
+    font-size: 1.2em;
+  }
+}
 
 .editRecording:hover,
 .deleteRecording:hover {
@@ -92,7 +113,7 @@
 .searchForm {
   display: flex;
   justify-content: center;
-  margin-left: 30px;
+  margin-top: 10px;
   margin-bottom: 30x;
 }
 
@@ -135,10 +156,8 @@
 }
 
 .Chronometer {
-  position: fixed;
-  top: 170px;
-  width: 40vw;
-  left: 30vw;
+  display: block;
+  margin-top: -80px;
 }
 
 /*# sourceMappingURL=main.css.map */

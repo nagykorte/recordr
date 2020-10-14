@@ -25,7 +25,7 @@ export default class Recording extends React.Component {
     }
     render() {
         return (
-            <div className="recording">
+            <div className="recording" key={this.props.name} >
                 <p>{this.props.name} | {this.props.duration}ms | {this.props.size}bytes </p>
                 <FontAwesomeIcon className="editRecording" onClick={this.rename.bind(this)} icon={faEdit} />
                 <FontAwesomeIcon className="deleteRecording" onClick={this.delete.bind(this)} icon={faTrashAlt} />

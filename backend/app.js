@@ -2,15 +2,14 @@ const express = require("express");
 const app = express();
 const fs = require('fs')
 const { promisify } = require('util');
-const { v4 } = require('uuid');
 const cors = require("cors");
 const bodyParser = require('body-parser')
 const AudioFile = require('./model')
 app.use(cors());
-
+app.use(bodyParser.json({ limit: '5mb' }));
+app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }));
 
 const writeFile = promisify(fs.writeFile);
-const readdir = promisify(fs.readdir);
 const mongoose = require('mongoose');
 
 const audioFolder = '../public/audios/';
@@ -18,7 +17,6 @@ if (!fs.existsSync(audioFolder)) {
     fs.mkdirSync(audioFolder);
 } // check for 
 
-app.use(bodyParser.json())
 
 mongoose.connect("mongodb://127.0.0.1:27017/recordr", {
     useNewUrlParser: true, useUnifiedTopology: true,
